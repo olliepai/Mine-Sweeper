@@ -45,8 +45,10 @@ public class MineSweeper {
      * @param firstCellRow Row of first cell opened. This cannot be a mine.
      */
     void initializeMines(int firstCellCol, int firstCellRow) {
-        // TODO fill in
+        // TODO fill in	
         // Hint, use `Optional.of(...)` to create a non-empty `Optional`.
+    		mines = Optional.of(new boolean[HEIGHT][WIDTH]);
+		numCellsToOpen = (WIDTH * HEIGHT - NUM_MINES);
     }
     
     /**
@@ -71,11 +73,18 @@ public class MineSweeper {
      */
     void resetGame(Object unused) {
         // TODO fill in
+    		mines = Optional.empty();
+    		for (int i = 0; i < buttons.length; i++) {
+    			for (int j = 0; j < buttons[0].length; j++) {
+    				buttons[i][j].setText("");
+    				buttons[i][j].setEnabled(true);
+    			}
+    		}
     }
     
     private void createAndShowFrame() {
         final JMenuItem resetMenuItem = new JMenuItem("Reset");
-        resetMenuItem.addActionListener(null); // TODO replace null with method reference that resets the game
+        resetMenuItem.addActionListener(); // TODO replace null with method reference that resets the game
         
         final JMenu gameMenu = new JMenu("Game");
         gameMenu.add(resetMenuItem);
